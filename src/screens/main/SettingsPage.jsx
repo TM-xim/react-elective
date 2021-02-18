@@ -4,15 +4,7 @@ import { Typography } from '@material-ui/core';
 import SettingsProfile from "./settings/SettingsProfile";
 import SettingsSubscription from "./settings/SettingsSubscription";
 
-const SettingsPage = (onSubmit) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  function onEdit({email, password}){
-    userService.login({email, password}).then(
-      () => history.push('/')
-    )
-  }
+const SettingsPage = () => {
 
   const activeUser = JSON.parse(localStorage.getItem("activeUser"));
   console.log(activeUser.email)
@@ -21,11 +13,8 @@ const SettingsPage = (onSubmit) => {
     <div>
       <Typography variant="h1">Settings page</Typography>
       <div>
-        <Typography variant="h6">{activeUser.email}</Typography>
-        <Typography variant="h6">{activeUser.password}</Typography>
-        <div>
-          <AuthForm onSubmit={onEdit}/>
-        </div>
+        <Typography variant="h6">Email : {activeUser.email}</Typography>
+        <Typography variant="h6">Password : {activeUser.password}</Typography>
       </div>
     </div>
   );
